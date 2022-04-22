@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysqls on starcluster的博客</title>
+    <link>https://starcluster08.gitee.io/mysqls/</link>
+    <description>Recent content in Mysqls on starcluster的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Apr 2022 10:15:59 +0800</lastBuildDate><atom:link href="https://starcluster08.gitee.io/mysqls/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql底层数据结构</title>
+      <link>https://starcluster08.gitee.io/mysqls/mysql%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Fri, 22 Apr 2022 10:15:59 +0800</pubDate>
+      
+      <guid>https://starcluster08.gitee.io/mysqls/mysql%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description>一、索引数据结构  数据机构查看网站推荐 查询每个page页的大小,mysql创建page页的时候会用连续的磁盘空间，加载的时候也会一次性加载到内存（默认大小16k）。 show global status like &amp;#39;Innodb_page_size&amp;#39;;   1.1、二叉数   对于有序的数据的插入，会形成链表，导致大量的磁盘io，因此mysql没有选择这样的数据结构。
+  1.2、红黑树（二叉平衡树）   对于大数据量的数据插入，会导致树的高度很高，对底层叶子节点的搜索同样会产生大量的磁盘io，因此mysql没有选择这样的数据结构。
+  1.3、Hash表  对索引的key进行一次hash计算就可以定位出数据的存储位置，很多时候hash索引要比B+Tree更高效。但因为其只满足“=”不支持“in”和范围查询，同时存在hash冲突，因此mysql没有选择这样的数据结构。  1.4、B tree   所有节点都存有数据，不存在冗余索引，同一个page页存放的索引数相对B+Tree会少一点，叶子节点之间不存在指针连接。
+  1.5、B+tree  非叶子节点不存储具体的数据，可以存放更多的索引，只存储索引（冗余）。叶子节点包含所有索引字段。叶子节点用指针连接，提供了范围访问的性能。 主键索引叶子节点存了所有的数据，非主键索叶子节点存对应的主键索引，先找到对应主键索引后通过回表的方式到主键索引中获取相应数据。   </description>
+    </item>
+    
+  </channel>
+</rss>
